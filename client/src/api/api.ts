@@ -1,13 +1,14 @@
 import axios from "axios";
 
-const localApi = axios.create({
+const api = axios.create({
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
 });
 
 // Request interceptor to add auth token
-localApi.interceptors.request.use(
+api.interceptors.request.use(
   (config) => {
     console.log('=== API REQUEST DEBUG ===');
     console.log('Request URL:', config.url);
@@ -33,7 +34,7 @@ localApi.interceptors.request.use(
 );
 
 // Response interceptor to handle token refresh
-localApi.interceptors.response.use(
+api.interceptors.response.use(
   (response) => {
     console.log('=== API RESPONSE SUCCESS ===');
     console.log('Response status:', response.status);
@@ -57,7 +58,7 @@ localApi.interceptors.response.use(
         console.log('Refresh token:', refreshToken ? 'Present' : 'Missing');
         
         if (refreshToken) {
-          const response = await axios.post("/api/auth/refresh", {
+          const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/auth/refresh`, {
             refreshToken,
           });
 
@@ -67,7 +68,7 @@ localApi.interceptors.response.use(
 
           // Retry the original request with new token
           originalRequest.headers.Authorization = `Bearer ${accessToken}`;
-          return localApi(originalRequest);
+          return api(originalRequest);
         }
       } catch (refreshError) {
         console.log('Token refresh failed:', refreshError.message);
@@ -82,4 +83,4 @@ localApi.interceptors.response.use(
   }
 );
 
-export default localApi;
+export default api;
