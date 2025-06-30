@@ -133,7 +133,8 @@ Pull requests are welcome, but for major changes, please open an issue first to 
 
 - **Author:** Manav Sharma
 - **Email:** [onlyfordrivebackup3@gmail.com](mailto:onlyfordrivebackup3@gmail.com)
-- **Project:** [CuraCompanion](https://github.com/manavmax/CuraCompanion)
+- **Project:** [CuraCompanion](curacompanion.netlify.app)
+- **Video:** [YoutubeVideo](https://www.youtube.com/watch?v=2UjpeDV2pnM)
 
 ---
 
