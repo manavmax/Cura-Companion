@@ -4,7 +4,7 @@
 
 ---
 
-![CuraCompanion Banner](./assets/banner.png)
+![CuraCompanion Banner](client/public/login-dark.png)
 
 ---
 
@@ -78,7 +78,18 @@ graph TD;
 
 ## 🖥️ Screenshots
 
-> _Add your screenshots here!_
+![CuraCompanion Banner](client/public/login.png)
+![CuraCompanion Banner](client/public/dashboard.png)
+![CuraCompanion Banner](client/public/dashboar2.png)
+![CuraCompanion Banner](client/public/chat-therapy.png)
+![CuraCompanion Banner](client/public/chat-therapy2.png)
+![CuraCompanion Banner](client/public/chat-therapy3.png)
+![CuraCompanion Banner](client/public/journal.png)
+![CuraCompanion Banner](client/public/emergency-crisis.png)
+![CuraCompanion Banner](client/public/resources.png)
+![CuraCompanion Banner](client/public/setting.png)
+![CuraCompanion Banner](client/public/setting5.png)
+![CuraCompanion Banner](client/public/dark-mode2.png)
 
 ---
 
