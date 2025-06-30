@@ -601,7 +601,7 @@ export function MoodTracking() {
                           <Heart className="h-6 w-6 text-primary" />
                         </div>
                         <div>
-                          <p className="text-2xl font-bold">{analytics.averageMood.toFixed(1)}</p>
+                          <p className="text-2xl font-bold">{analytics.averageMood != null ? analytics.averageMood.toFixed(1) : '-'}</p>
                           <p className="text-sm text-muted-foreground">Average Mood</p>
                         </div>
                       </div>
