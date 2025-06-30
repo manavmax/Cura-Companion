@@ -15,11 +15,11 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:3000',
+        target: 'https://cura-companion.onrender.com',
         changeOrigin: true,
       },
       '/logs': {
-        target: 'http://localhost:3000',
+        target: 'https://cura-companion.onrender.com',
         changeOrigin: true,
       }
     },
