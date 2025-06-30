@@ -128,7 +128,7 @@ export function ChatTherapy() {
     recognitionRef.current.lang = 'en-US'
     recognitionRef.current.onresult = (event: any) => {
       const transcript = event.results[0][0].transcript
-      setCurrentMessage(transcript)
+      setCurrentMessage((prev: string) => prev + transcript)
       setIsListening(false)
     }
     recognitionRef.current.onerror = () => setIsListening(false)
@@ -159,20 +159,20 @@ export function ChatTherapy() {
       }
       if (!recorder) {
         toast({ variant: "destructive", title: "Error", description: "No supported audio format found for recording." })
-        stream.getTracks().forEach((track) => track.stop())
+        stream.getTracks().forEach((track: MediaStreamTrack) => track.stop())
         return
       }
       mediaRecorderRef.current = recorder
       setAudioChunks([])
-      recorder.ondataavailable = (e) => {
-        if (e.data.size > 0) setAudioChunks((prev) => [...prev, e.data])
+      recorder.ondataavailable = (e: BlobEvent) => {
+        if (e.data.size > 0) setAudioChunks((prev: Blob[]) => [...prev, e.data])
       }
       recorder.onstop = async () => {
         const audioBlob = new Blob(audioChunks, { type: recorder!.mimeType })
         if (audioBlob.size < 1000) {
           toast({ variant: "destructive", title: "Audio Error", description: "Recording was too short or invalid. Please try again." })
           setIsListening(false)
-          stream.getTracks().forEach((track) => track.stop())
+          stream.getTracks().forEach((track: MediaStreamTrack) => track.stop())
           return
         }
         let audioFile: File
@@ -182,7 +182,7 @@ export function ChatTherapy() {
           formData.append("audio", audioFile)
           try {
             // Send to backend for conversion and STT
-            const response = await axios.post("/api/voice/stt", formData, {
+            const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/voice/stt`, formData, {
               headers: {
                 "Accept": "application/json"
               }
@@ -228,7 +228,7 @@ export function ChatTherapy() {
           toast({ variant: "destructive", title: "Audio Error", description: err?.message || (typeof err === 'string' ? err : JSON.stringify(err)) })
         }
         setIsListening(false)
-        stream.getTracks().forEach((track) => track.stop())
+        stream.getTracks().forEach((track: MediaStreamTrack) => track.stop())
       }
       recorder.start()
       setIsListening(true)
@@ -247,7 +247,7 @@ export function ChatTherapy() {
     }
     setIsListening(false)
     if (audioStreamRef.current) {
-      audioStreamRef.current.getTracks().forEach((track) => track.stop())
+      audioStreamRef.current.getTracks().forEach((track: MediaStreamTrack) => track.stop())
     }
   }
 
@@ -255,7 +255,7 @@ export function ChatTherapy() {
   const playTTS = async (text: string) => {
     try {
       const response = await axios.post(
-        ELEVENLABS_TTS_URL,
+        `${import.meta.env.VITE_API_URL}/api/voice/tts`,
         { text, model_id: "eleven_multilingual_v2", voice_settings: { stability: 0.5, similarity_boost: 0.5 } },
         {
           headers: {
@@ -286,7 +286,7 @@ export function ChatTherapy() {
       type: "text"
     }
 
-    setSession(prev => prev ? {
+    setSession((prev: ChatSession | null) => prev ? {
       ...prev,
       messages: [...prev.messages, userMessage]
     } : null)
@@ -318,7 +318,7 @@ export function ChatTherapy() {
         type: response.isCrisis ? "crisis" : "text"
       }
 
-      setSession(prev => prev ? {
+      setSession((prev: ChatSession | null) => prev ? {
         ...prev,
         messages: [...prev.messages, aiMessage]
       } : null)
@@ -340,14 +340,14 @@ export function ChatTherapy() {
         console.log("Starting voice session...")
         const response = await startVoiceSession()
         setIsVoiceActive(true)
-        setSession(prev => prev ? { ...prev, mode: "voice", id: response.sessionId } : null)
+        setSession((prev: ChatSession | null) => prev ? { ...prev, mode: "voice", id: response.sessionId } : null)
         toast({
           title: "Voice Mode",
           description: "Voice therapy session started"
         })
       } else {
         setIsVoiceActive(false)
-        setSession(prev => prev ? { ...prev, mode: "text" } : null)
+        setSession((prev: ChatSession | null) => prev ? { ...prev, mode: "text" } : null)
         toast({
           title: "Text Mode",
           description: "Switched back to text mode"
@@ -369,14 +369,14 @@ export function ChatTherapy() {
         console.log("Starting video session...")
         const response = await startVideoSession()
         setIsVideoActive(true)
-        setSession(prev => prev ? { ...prev, mode: "video", id: response.sessionId } : null)
+        setSession((prev: ChatSession | null) => prev ? { ...prev, mode: "video", id: response.sessionId } : null)
         toast({
           title: "Video Mode",
           description: "Video therapy session started"
         })
       } else {
         setIsVideoActive(false)
-        setSession(prev => prev ? { ...prev, mode: "text" } : null)
+        setSession((prev: ChatSession | null) => prev ? { ...prev, mode: "text" } : null)
         toast({
           title: "Text Mode",
           description: "Switched back to text mode"
@@ -398,7 +398,7 @@ export function ChatTherapy() {
     try {
       console.log("Ending chat session...")
       await endChatSession(session.id)
-      setSession(prev => prev ? { ...prev, isActive: false, status: "completed" } : null)
+      setSession((prev: ChatSession | null) => prev ? { ...prev, isActive: false, status: "completed" } : null)
       toast({
         title: "Session Ended",
         description: "Your therapy session has been completed"
@@ -461,7 +461,7 @@ export function ChatTherapy() {
           videoPreviewRef.current.srcObject = null
           videoPreviewRef.current.src = URL.createObjectURL(blob)
         }
-        stream.getTracks().forEach((track) => track.stop())
+        stream.getTracks().forEach((track: MediaStreamTrack) => track.stop())
         setIsRecordingVideo(false)
       }
       recorder.start()
@@ -481,7 +481,7 @@ export function ChatTherapy() {
     }
     setIsRecordingVideo(false)
     if (videoStreamRef.current) {
-      videoStreamRef.current.getTracks().forEach((track) => track.stop())
+      videoStreamRef.current.getTracks().forEach((track: MediaStreamTrack) => track.stop())
     }
   }
 
@@ -491,11 +491,11 @@ export function ChatTherapy() {
     const formData = new FormData()
     formData.append("video", videoBlob, "input.webm")
     try {
-      const response = await axios.post("/api/voice/video", formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/api/voice/video`, formData, {
         headers: { "Accept": "application/json" }
       })
       setCurrentMessage("")
-      setSession(prev => prev ? {
+      setSession((prev: ChatSession | null) => prev ? {
         ...prev,
         messages: [
           ...prev.messages,
