@@ -1,0 +1,25 @@
+{
+  "name": "CuraCompanion",
+  "version": "1.0.0",
+  "description": "Mental Health Companion App",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently -n \"client,server\" \"npm run client\" \"npm run server\"",
+    "client": "cd client && npm run dev",
+    "server": "cd server && npm run dev",
+    "build": "cd client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install-deps": "npm install && cd client && npm install && cd ../server && npm install",
+    "clean": "rm -rf node_modules client/node_modules server/node_modules package-lock.json client/package-lock.json server/package-lock.json"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "node-cache": "^5.1.2",
+    "twilio": "^5.7.1"
+  }
+}
