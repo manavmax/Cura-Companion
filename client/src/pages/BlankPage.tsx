@@ -1,4 +1,5 @@
-
+// Project started in Bolt.new for the Bolt.new Hackathon
+// See: https://bolt.new/
 import { Construction, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -22,9 +23,6 @@ export function BlankPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            <p className="text-sm text-muted-foreground">
-              Please tell Pythagora to implement the {location.pathname} page
-            </p>
             <Button 
               onClick={() => navigate("/")} 
               className="w-full"

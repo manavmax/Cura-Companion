@@ -1,97 +1,135 @@
-```markdown
-# CuraCompanion
+# CuraCompanion 🧠💬
 
-CuraCompanion is a mobile-first mental health companion app that offers AI-powered therapeutic support through multiple interaction modes. The app features conversational therapy, mood tracking, journaling, and crisis support in a calm, accessible interface. Designed for underserved communities, the app supports offline capabilities and multilingual options, making mental health care more accessible and effective.
+> **Your AI-powered mental health companion: chat, track, journal, and get help—anytime, anywhere.**
 
-## Overview
+---
 
-CuraCompanion is built with a modern technology stack, leveraging both front-end and back-end frameworks to deliver a cohesive, responsive user experience.
+![CuraCompanion Banner](./assets/banner.png)
 
-### Architecture
+---
 
-The project consists of two main parts: the frontend and backend.
+## 🌟 Project Story & Inspiration
 
-- **Frontend**:
-  - Built with **ReactJS** and uses the **Vite** dev server.
-  - Integrated with **shadcn-ui** component library and **Tailwind CSS** for styling.
-  - Client-side routing managed with `react-router-dom`.
-  - Mock data is used for frontend development and interactions with the backend.
-  - Runs on **port 5173**.
+CuraCompanion was born from a desire to make mental health support accessible, proactive, and compassionate. Inspired by the growing mental health crisis and the barriers many face in seeking help, CuraCompanion combines AI, real-time analytics, and human-centered design to empower users on their mental health journey.
 
-- **Backend**:
-  - Utilizes **Express** for server-side operations with REST API endpoints.
-  - **MongoDB** is used for the database, with Mongoose for object data modeling.
-  - Implements token-based authentication with JWT.
-  - Runs on **port 3000**.
+---
 
-### Project Structure
+## 🚀 Features
 
-- **Frontend (client/)**:
-  - Components: `client/src/components`
-  - Pages: `client/src/pages`
-  - API Requests: `client/src/api`
-  - Main Configuration Files: `client/package.json`, `client/vite.config.ts`, `client/tailwind.config.js`
+- **AI Chat & Therapy**: Text, voice, and video therapy with empathetic AI
+- **Mood Tracking**: Daily check-ins, analytics, and AI-generated insights
+- **Journaling**: Secure, private, with voice-to-text and prompts
+- **Crisis Detection**: Real-time detection in all user data, instant SMS/call alerts
+- **Resource Finder**: Location-aware local and online mental health resources
+- **Emergency Support**: Editable contacts, instant alerting, live notifications
+- **Offline & Multilingual**: Works offline, supports multiple languages
 
-- **Backend (server/)**:
-  - Routes: `server/routes`
-  - Services: `server/services`
-  - Models: `server/models`
-  - Configuration Files: `server/package.json`, `server/server.js`, `server/config/database.js`
+---
 
-## Features
+## 🛠️ Tech Stack
 
-### User Experience Flow
-- **Initial Setup & Onboarding**: Simple registration, language selection, onboarding tour, and optional voice setup.
-- **Dashboard**: Mood check-in, quick access to core features, mood trends, and offline indicators.
-- **Therapy Modes**:
-  - Text-Based: Conversational AI with CBT-informed guidance.
-  - Voice Therapy: Real-time speech-to-text and natural AI voice responses.
-  - Video Therapy: AI avatar with facial expressions and lip-sync.
-- **Mood Tracking**: Color gradient slider for nuanced mood expression, weekly/monthly trends visualization.
-- **Journaling System**:
-  - Text Journaling: Therapeutic prompts, auto-saving, and search functionality.
-  - Voice Journaling: Real-time transcription and recording.
-- **Crisis Detection & Emergency Response**: Immediate crisis support, emergency contact calling, and grounding exercises.
-- **Local Resources Discovery**: Location-based mental health resource listings.
-- **Offline Experience**: Seamless functionality without internet connection.
-- **Multilingual Support**: Multiple languages and accents for a natural user experience.
+**Languages:**
+- TypeScript (frontend)
+- JavaScript (backend)
 
-## Getting Started
+**Frontend:**
+- React (Vite)
+- React Router
+- Radix UI, Lucide React, Sonner, Recharts
+- Tailwind CSS
 
-### Requirements
+**Backend:**
+- Node.js, Express.js
+- MongoDB (Mongoose)
+- Node-Cache, Bcrypt, Dotenv
 
-Ensure the following tools are installed on your machine:
-- **Node.js** (version 14 or higher)
-- **npm** (Node Package Manager)
-- **MongoDB**
+**APIs & Integrations:**
+- OpenAI, OpenRouter (LLM)
+- ElevenLabs (voice)
+- Google Places API (resources)
+- Twilio (SMS/call alerts)
+- Geolocation API (browser)
 
-### Quickstart
+**Cloud & Platforms:**
+- MongoDB Atlas
+- Vercel/Netlify (frontend hosting)
+- Render/Heroku/DigitalOcean (backend hosting)
 
-Follow these steps to get the project up and running:
+**Dev Tools:**
+- Vite, ESLint, Prettier, Git, GitHub
 
-1. **Clone the repository**:
-   ```sh
-   git clone https://github.com/your-username/CuraCompanion.git
-   cd CuraCompanion
-   ```
+---
 
-2. **Install dependencies**:
-   ```sh
-   npm install
-   ```
+## 🏗️ Architecture
 
-3. **Start the project**:
-   ```sh
-   npm run start
-   ```
-
-   This command will concurrently run both the frontend and backend servers.
-
-### License
-
-The project is proprietary (not open source).
-
-© 2024. All rights reserved.
+```mermaid
+graph TD;
+  A[User] -->|Web/App| B(Frontend: React)
+  B -->|REST API| C(Backend: Express)
+  C --> D[MongoDB Atlas]
+  C --> E[OpenAI/OpenRouter]
+  C --> F[Twilio]
+  C --> G[Google Places]
+  C --> H[ElevenLabs]
+  B --> I[Geolocation API]
 ```
 
-This README.md provides a comprehensive guide to the project, including an overview of the technology stack, key features, setup instructions, and licensing information. This ensures any developer or stakeholder can understand, set up, and contribute to the project effectively.
+---
+
+## 🖥️ Screenshots
+
+> _Add your screenshots here!_
+
+---
+
+## ⚡ Getting Started
+
+### Prerequisites
+- Node.js (v16+)
+- npm
+- MongoDB
+
+### 1. Clone the repo
+```sh
+git clone https://github.com/your-username/CuraCompanion.git
+cd CuraCompanion
+```
+
+### 2. Install dependencies
+```sh
+npm install
+```
+
+### 3. Set up environment variables
+- Copy `.env.example` to `.env` in both `client/` and `server/` and fill in your API keys (OpenAI, ElevenLabs, Twilio, Google, MongoDB, etc.)
+
+### 4. Run the app
+```sh
+npm run start
+```
+- Frontend: http://localhost:5173
+- Backend: http://localhost:3000
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+Proprietary. All rights reserved. 2024.
+
+---
+
+## 📬 Contact
+
+- **Author:** Manav Sharma
+- **Email:** [your-email@example.com](mailto:your-email@example.com)
+- **Project:** [CuraCompanion](https://github.com/your-username/CuraCompanion)
+
+---
+
+> _CuraCompanion is more than just an app—it's a step toward making mental health support accessible, proactive, and compassionate._ 

@@ -1,3 +1,5 @@
+// Project scaffolded and started in Bolt.new for the Bolt.new Hackathon
+// See: https://bolt.new/
 import path from "path"
 import react from "@vitejs/plugin-react"
 import { defineConfig } from "vite"
@@ -23,7 +25,6 @@ export default defineConfig({
     },
     allowedHosts: [
       'localhost',
-      '.pythagora.ai'
     ],
     watch: {
       ignored: ['**/node_modules/**', '**/dist/**', '**/public/**', '**/log/**']
