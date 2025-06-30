@@ -10,7 +10,7 @@
 
 ## 🌟 Project Story & Inspiration
 
-CuraCompanion was born from a desire to make mental health support accessible, proactive, and compassionate. Inspired by the growing mental health crisis and the barriers many face in seeking help, CuraCompanion combines AI, real-time analytics, and human-centered design to empower users on their mental health journey.
+CuraCompanion was born to make mental health support accessible, proactive, and compassionate. Inspired by the growing mental health crisis and the barriers many face in seeking help, CuraCompanion combines AI, real-time analytics, and human-centred design to empower users on their mental health journey.
 
 ---
 
@@ -114,21 +114,15 @@ npm run start
 
 ## 🤝 Contributing
 
-Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
-
----
-
-## 📄 License
-
-Proprietary. All rights reserved. 2024.
+Pull requests are welcome, but for major changes, please open an issue first to discuss what you would like to change.
 
 ---
 
 ## 📬 Contact
 
 - **Author:** Manav Sharma
-- **Email:** [your-email@example.com](mailto:your-email@example.com)
-- **Project:** [CuraCompanion](https://github.com/your-username/CuraCompanion)
+- **Email:** [onlyfordrivebackup3@gmail.com](mailto:onlyfordrivebackup3@gmail.com)
+- **Project:** [CuraCompanion](https://github.com/manavmax/CuraCompanion)
 
 ---
 
