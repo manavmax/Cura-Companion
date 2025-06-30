@@ -27,6 +27,7 @@
     "mongoose": "^8.8.3",
     "multer": "^2.0.1",
     "node-cache": "^5.1.2",
-    "openai": "^5.8.2"
+    "openai": "^5.8.2",
+    "twilio": "^5.7.1"
   }
 }
