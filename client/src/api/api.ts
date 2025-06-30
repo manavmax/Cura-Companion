@@ -71,7 +71,8 @@ api.interceptors.response.use(
           return api(originalRequest);
         }
       } catch (refreshError) {
-        console.log('Token refresh failed:', refreshError.message);
+        const errorMsg = refreshError instanceof Error ? refreshError.message : String(refreshError);
+        console.log('Token refresh failed:', errorMsg);
         // Refresh failed, redirect to login
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
